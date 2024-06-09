@@ -1,10 +1,3 @@
-Get-ChildItem -Path ".\*.ps1" | %{
-    If (($_.Name -like "*.ps1") -and ($_.Name -notlike "*Tests.ps1"))
-    {
-        & ".\$($_.FullName)"
-    }
-}
-
 Describe "Unit Tests - New File" {
     Context "Context - New-Item OK" {
         Mock -CommandName New-Item -MockWith {
