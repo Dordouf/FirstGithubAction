@@ -11,4 +11,5 @@ jobs:
       - name: Perform a Pester unit test
         shell: pwsh
         run : |
+          . ".\lib_powershell.ps1"
           Invoke-Pester
