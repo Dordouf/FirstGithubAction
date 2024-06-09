@@ -2,11 +2,12 @@ name: Mon premier workflow
 on: [push]
 
 jobs:
-  build:
+  pester-test:
+    name: Pester test  
     runs-on: windows-2019
     steps:
       - name: Check out repository code
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
       - name: Perform a Pester unit test
         shell: pwsh
         run : |
