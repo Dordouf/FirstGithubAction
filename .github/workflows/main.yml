@@ -2,7 +2,7 @@ name: Mon premier workflow
 on: [push]
 
 jobs:
-  pester-test:
+  pester-tests:
     name: Pester test  
     runs-on: windows-2019
     steps:
