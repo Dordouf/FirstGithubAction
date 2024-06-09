@@ -4,14 +4,14 @@ Function New-File
   Param
   (
     [Parameter(Mandatory=$true)]
-    [String]$FileName
+    [String]$FilePath
   )
 
   $ErrorActionPreference = "Stop"
 
   Try
   {
-    $fileCreated = New-Item -Path $FileName -ItemType File
+    $fileCreated = New-Item -Path $FilePath -ItemType File
 
     return $true
   }
