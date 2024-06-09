@@ -18,6 +18,7 @@ Function New-File
   Catch
   {
     $err = $_.Exception.Message
-    Throw "Error occured while New-File function : $err
+    return $false
+    #Throw "Error occured while New-File function : $err
   }
 }
