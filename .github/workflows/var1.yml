@@ -8,13 +8,14 @@ on:
         type: string
 
 jobs:
-  workflow_1:
-    name: display message  
+  job_1:
+    name: Job 1
     runs-on: windows-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Perform a Pester unit test
+      - name: display message
         shell: pwsh
         run : |
-         write-host $env:message
+         write-host "env message : $($env:message)"
+         write-host "message : $($message)"
