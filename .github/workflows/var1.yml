@@ -10,7 +10,7 @@ on:
 jobs:
   workflow_1:
     name: display message  
-    runs-on: windows-2019
+    runs-on: windows-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
