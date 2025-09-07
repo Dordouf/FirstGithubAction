@@ -1,4 +1,4 @@
-name: Mon premier workflow
+name: Affichage variables
 on:
   workflow_dispatch:
     inputs:
@@ -12,10 +12,13 @@ jobs:
     name: Job 1
     runs-on: windows-latest
     steps:
+      - name: Get input variables
+        shell: pwsh
+        run: |
+          echo "INPUT_MESSAGE=${{ github.event.input.message }} >> $env:GITHUB_ENV
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: display message
         shell: pwsh
         run : |
-         write-host "env message : $($env:message)"
-         write-host "message : $($message)"
+         write-host "message : $($env:INPUT_MESSAGE)"
