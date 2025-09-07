@@ -8,7 +8,7 @@ on:
         type: string
 
 env:
-  VAR2: ${{ env.VARIABLE2 }}
+  VAR2: ${{ vars.VARIABLE2 }}
 
 jobs:
   job_1:
