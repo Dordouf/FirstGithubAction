@@ -22,3 +22,4 @@ jobs:
         shell: pwsh
         run : |
          write-host "message : $($env:INPUT_MESSAGE)"
+         write-host "env variable gh : $($env:VARIABLE1)"
