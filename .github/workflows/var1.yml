@@ -15,7 +15,7 @@ jobs:
       - name: Get input variables
         shell: pwsh
         run: |
-          echo "INPUT_MESSAGE=${{ github.event.input.message }}" >> $env:GITHUB_ENV
+          echo "INPUT_MESSAGE=${{ github.event.inputs.message }}" >> $env:GITHUB_ENV
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: display message
