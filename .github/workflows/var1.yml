@@ -7,6 +7,9 @@ on:
         required: true
         type: string
 
+env:
+  VAR2: ${{ env.VARIABLE2 }}
+
 jobs:
   job_1:
     name: Job 1
@@ -22,4 +25,4 @@ jobs:
         shell: pwsh
         run : |
          write-host "message : $($env:INPUT_MESSAGE)"
-         write-host "env variable gh : $($env:VARIABLE2)"
+         write-host "env variable gh : $($env:VAR2)"
