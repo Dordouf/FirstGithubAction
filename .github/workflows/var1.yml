@@ -9,11 +9,13 @@ on:
 
 env:
   VAR2: ${{ vars.VARIABLE2 }}
+  VAR1: ${{ vars.VARIABLE1 }}
 
 jobs:
   job_1:
     name: Job 1
     runs-on: windows-latest
+    environment: dev
     steps:
       - name: Get input variables
         shell: pwsh
@@ -25,4 +27,5 @@ jobs:
         shell: pwsh
         run : |
          write-host "message : $($env:INPUT_MESSAGE)"
-         write-host "env variable gh : $($env:VAR2)"
+         write-host "env variable gh2 : $($env:VAR2)"
+         write-host "env variable gh1 : $($env:VAR1)"
