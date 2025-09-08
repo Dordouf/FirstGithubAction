@@ -1,0 +1,37 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - "v*"
+
+  workflow_call:
+  workflow_dispatch:
+
+env:
+  current_branch: ${{ github.head.ref || github.ref_name }}
+
+jobs:
+
+  CI:
+    uses: ./.github/workflows/ci.yml
+    secrets:
+      IAM_SECRET_CI: ${{ secrets.IAM_SECRET_CI }}
+    with:
+      CI_TYPE: "pre_check"
+
+  CD:
+    uses: ./.github/workflows/cd.yml
+    needs: CI
+    secrets:
+      IAM_SECRET_CD: ${{ secrets.IAM_SECRET_CD }}
+
+  POST_CHECK:
+    uses: ./.github/workflows/ci.yml
+    needs: CD
+    secrets:
+      IAM_SECRET_CI: ${{ secrets.IAM_SECRET_CI }}
+    with:
+      CI_TYPE: "post_check"
+    
