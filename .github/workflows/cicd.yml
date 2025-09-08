@@ -20,6 +20,7 @@ jobs:
       IAM_SECRET_CI: ${{ secrets.IAM_SECRET_CI }}
     with:
       CI_TYPE: "pre_check"
+      branch: ${{ env.current_branch }}
 
   CD:
     uses: ./.github/workflows/cd.yml
