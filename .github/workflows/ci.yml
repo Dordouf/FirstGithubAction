@@ -1,0 +1,38 @@
+name: CI Workflow
+
+on:
+  workflow_call:
+    inputs:
+      CI_TYPE:
+        description: "Type of CI"
+        required: true
+        type: string
+      BRANCH:
+        description: "Current branch"
+        required: true
+        type: string
+    secrets:
+      IAM_SECRET_CI:
+        description: "secret for CI"
+        required: true
+
+env:
+  IAM_SECRET_CI: ${{ secrets.IAM_SECRET_CI }}
+  
+
+jobs:
+  unit_tests:
+    if: ${{ inputs.CI_TYPE == "pre_check" }}
+    runs-on: []
+    environment: dev
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.BRANCH }}
+    
+    
+    
+        
