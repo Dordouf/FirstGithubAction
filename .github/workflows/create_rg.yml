@@ -21,8 +21,8 @@ jobs:
       - name: Azure Context
         uses: azure/powershell@v2
         with:
-        azPSVersion: "latest"
-        inlineScript: |
-          Get-AzContext
+          azPSVersion: "latest"
+          inlineScript: |
+            Get-AzContext
 
 
