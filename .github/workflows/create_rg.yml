@@ -18,6 +18,21 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       
+      - name: Install Required Modules
+        shell: pwsh
+        run: |
+          Write-Host "Installation of required modules"
+          $requireModules = @{
+            "Az.Accounts"  = "5.0.0"
+            "Az.Resources" = "8.0.0"
+          }
+          
+          ForEach ($currentModule in $requiredModules.GetEnumerator())
+          {
+            Write-Host "Installing module $($currentModule.Key) with version $($currentModule.Value)"
+            Install-Module -Name $($currentModule.Key) -RequiredVersion $($currentModule.Value)
+          }
+      
       - name: Azure Context
         uses: azure/powershell@v2
         with:
