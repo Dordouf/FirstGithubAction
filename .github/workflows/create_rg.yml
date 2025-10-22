@@ -22,7 +22,7 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "Installation of required modules"
-          $requireModules = @{
+          $requiredModules = @{
             "Az.Accounts"  = "5.0.0"
             "Az.Resources" = "8.0.0"
           }
