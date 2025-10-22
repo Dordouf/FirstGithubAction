@@ -32,12 +32,19 @@ jobs:
             Write-Host "Installing module $($currentModule.Key) with version $($currentModule.Value)"
             Install-Module -Name $($currentModule.Key) -RequiredVersion $($currentModule.Value) -Confirm:$false -Force
           }
-      
+
       - name: Azure Context
-        uses: azure/powershell@v2
-        with:
-          azPSVersion: "latest"
-          inlineScript: |
-            Get-AzContext
+        shell: pwsh
+        run: 
+          Get-AzContext
+      
+      #- name: Azure Context
+      #  uses: azure/powershell@v2
+      #  with:
+      #    azPSVersion: "latest"
+      #    inlineScript: |
+      #      Get-AzContext
+    
+        
 
 
