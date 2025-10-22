@@ -30,7 +30,7 @@ jobs:
           ForEach ($currentModule in $requiredModules.GetEnumerator())
           {
             Write-Host "Installing module $($currentModule.Key) with version $($currentModule.Value)"
-            Install-Module -Name $($currentModule.Key) -RequiredVersion $($currentModule.Value)
+            Install-Module -Name $($currentModule.Key) -RequiredVersion $($currentModule.Value) -Confirm:$false -Force
           }
       
       - name: Azure Context
