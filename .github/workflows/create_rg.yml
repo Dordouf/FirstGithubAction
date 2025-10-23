@@ -7,6 +7,8 @@ on:
         description: "Resource Group Name"
         required: true
         type: string
+env:
+  RGNAME: ${{ github.event.inputs.resourceGroupName }}
 
 # https://github.com/marketplace/actions/azure-login
 jobs:
@@ -41,7 +43,7 @@ jobs:
       - name: Create RG
         shell: pwsh
         run: |
-          Write-Host "Create of RG : $($env:resourceGroupName)"
+          Write-Host "Create of RG : $($env:RGNAME)"
       
       #- name: Azure Context
       #  uses: azure/powershell@v2
