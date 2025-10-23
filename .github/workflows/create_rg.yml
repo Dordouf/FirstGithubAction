@@ -44,6 +44,7 @@ jobs:
         shell: pwsh
         run: |
           Write-Host "Create of RG : $($env:RGNAME)"
+          New-AzResourceGroup -Name $env:RGNAME -Location "North Europe"
       
       #- name: Azure Context
       #  uses: azure/powershell@v2
