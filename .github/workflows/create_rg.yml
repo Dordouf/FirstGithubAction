@@ -9,16 +9,23 @@ on:
         type: string
 env:
   RGNAME: ${{ github.event.inputs.resourceGroupName }}
+  CLIENTID: ${{ secrets.CLIENT_ID }}
+  CLIENTSECRET: ${{ secrets.CLIENT_SECRET}}
+  TENANTID: ${{ vars.TENANTID}}
+  SUBSCRIPTIONID: ${{ vars.SUBSCRIPTIONID }}
+
+
+
 
 # https://github.com/marketplace/actions/azure-login
 jobs:
   jobs:
     runs-on: ubuntu-latest
     steps:
-      - name: Azure Login
-        uses: azure/login@v2
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      #- name: Azure Login
+      #  uses: azure/login@v2
+      #  with:
+      #    creds: ${{ secrets.AZURE_CREDENTIALS }}
       
       - name: Install Required Modules
         shell: pwsh
@@ -34,6 +41,15 @@ jobs:
             Write-Host "Installing module $($currentModule.Key) with version $($currentModule.Value)"
             Install-Module -Name $($currentModule.Key) -RequiredVersion $($currentModule.Value) -Confirm:$false -Force
           }
+      
+      - name: Connect to Azure
+        shell: pwsh
+        run: |
+
+          $pwd  = ConvertTo-SecureString $env:CLIENTSECRET -AsPlainText -Force
+          $cred = New-Object System.Management.Automation.PSCredential($env:CLIENTID,$pwd)
+
+          Connect-AzAccount -ServicePrincipal -TenantId $env:TENANTID -SubscriptionId $env:SUBSCRIPTIONID -Credential $cred
 
       - name: Azure Context
         shell: pwsh
