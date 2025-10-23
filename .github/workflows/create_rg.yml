@@ -35,12 +35,12 @@ jobs:
 
       - name: Azure Context
         shell: pwsh
-        run: 
+        run: |
           Get-AzContext
       
       - name: Create RG
         shell: pwsh
-        run:
+        run: |
           Write-Host "Create of RG : $($env:resourceGroupName)"
       
       #- name: Azure Context
