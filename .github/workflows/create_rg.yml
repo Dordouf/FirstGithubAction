@@ -9,12 +9,10 @@ on:
         type: string
 env:
   RGNAME: ${{ github.event.inputs.resourceGroupName }}
-  CLIENTID: ${{ secrets.CLIENT_ID }}
-  CLIENTSECRET: ${{ secrets.CLIENT_SECRET}}
+  CLIENTID: ${{ secrets.CLIENTID }}
+  CLIENTSECRET: ${{ secrets.CLIENTSECRET}}
   TENANTID: ${{ vars.TENANTID}}
   SUBSCRIPTIONID: ${{ vars.SUBSCRIPTIONID }}
-
-
 
 
 # https://github.com/marketplace/actions/azure-login
